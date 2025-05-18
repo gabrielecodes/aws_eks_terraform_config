@@ -38,7 +38,7 @@ data "aws_ami" "eks_worker" {
 }
 
 resource "aws_launch_template" "eks_nodes" {
-  name_prefix   = "eks-x86-"
+  name_prefix   = "eks-node-"
   image_id      = data.aws_ami.eks_worker.id
   instance_type = "t3.small"
 
@@ -48,7 +48,7 @@ resource "aws_launch_template" "eks_nodes" {
     resource_type = "instance"
 
     tags = {
-      Name = "eks-x86-node"
+      Name = "eks-node"
     }
   }
 }
@@ -75,7 +75,7 @@ resource "aws_eks_node_group" "nodes" {
     version = "$Latest"
   }
 
-  capacity_type = "SPOT"
+  capacity_type = "ON_DEMAND"
 
   depends_on = [
     aws_iam_role_policy_attachment.eks_node_group_policy,
@@ -83,7 +83,7 @@ resource "aws_eks_node_group" "nodes" {
     aws_subnet.private_subnet_a,
     aws_subnet.private_subnet_b,
     aws_subnet.private_subnet_c,
-    aws_security_group.eks_nodes_sg, # Ensure SG is created first
+    aws_security_group.eks_nodes_sg,
   ]
 }
 
