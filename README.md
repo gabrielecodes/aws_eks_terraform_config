@@ -20,13 +20,20 @@ This project provides Terraform configuration to provision a secure and scalable
 **Intended Use:**
 
 This project serves as a foundation for deploying a production-ready EKS cluster with a focus on network security. Consider customizing and extending this configuration to meet specific application requirements.
-In particular consider adding your own backend for terraform state storage & management.
+In particular:
 
-**Next Steps:**
+- consider adding your own backend for terraform state storage & management.
+- change the name and specify the region where you want to deploy
+- add your variables (e.g. in a `terraform.tfvars` or a specific file for prod/dev)
+
+**After Provisioning:**
 
 After provisioning the cluster using this configuration, the next steps typically involve:
 
-- Configuring `kubectl` to interact with the cluster.
-- Deploying an Ingress controller (e.g., Nginx) for managing external access to applications.
-- Deploying your applications onto the worker nodes.
+- Configuring `kubectl` to interact with the cluster:
+  - `aws eks update-kubeconfig --name development-eks-cluster --region <your_aws_region>`
+- Verify connectivity:
+  - `kubectl get namespaces`
+  - `kubectl get nodes`
+  - `kubectl get pods -n kube-system`
 - Implementing further security measures like Network Policies and Secrets Management.
