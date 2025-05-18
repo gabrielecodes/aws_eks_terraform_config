@@ -14,8 +14,6 @@ This project provides Terraform configuration to provision a secure and scalable
 - **IAM Roles:** Includes the necessary IAM roles for the EKS cluster and node group.
 - **Security Groups:** Configures security groups to control inbound and outbound traffic for the EKS control plane and worker nodes.
 - **Kubernetes Provider Configuration:** Sets up the Terraform Kubernetes provider to interact with the provisioned EKS cluster.
-- **Admin User Access:** Optionally configures a `ClusterRoleBinding` to grant the user running Terraform `cluster-admin` privileges.
-- **Helm Provider (Example):** Includes an example of how to configure the Helm provider for deploying applications like the Nginx Ingress Controller.
 
 **Intended Use:**
 
