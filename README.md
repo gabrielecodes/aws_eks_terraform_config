@@ -1,4 +1,4 @@
-# EKS Cluster Provisioning with Private Nodes via NAT Gateways
+# EKS Cluster Provisioning with Private Nodes via NAT Gateways (WIP)
 
 This project provides Terraform configuration to provision a secure and scalable Amazon Elastic Kubernetes Service (EKS) cluster. To enhance security, worker nodes and the control plane within private subnets, using NAT Gateways for outbound internet access.
 
